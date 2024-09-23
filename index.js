@@ -4,7 +4,7 @@ const { MongoClient, ObjectId } = require('mongodb')
 
 //Preparamos as informações de acesso ao banco de dados
 const dbUrl = process.env.DATABASE_URL
-const dbName = process.env.DATABASE_NAME
+const dbName = "mongodb-arquitetura-mvc"
 
 //Declaramos a função main
 async function main() {
@@ -23,7 +23,7 @@ async function main() {
     res.send('Hello World!')
   })
 
-  const lista = ['Java', 'Kotlin', 'Android']
+  // const lista = ['Java', 'Kotlin', 'Android']
 
   //Endpoint Read all [GET] /personagem 
   app.get('/personagem', async function (req, res) {
