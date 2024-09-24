@@ -41,8 +41,24 @@ async function create(req, res) {
 
 }
 
-function updateById(req, res) {
-  res.send('Update By Id')
+async function updateById(req, res) {
+  //acessamos o ID dos parametros da rota
+  const id = req.params.id
+
+  //acessamos o body da requisição
+  const newItem = req.body
+
+
+  //checar se o `nome´ esta presente no body
+  if (!newItem || !newItem.nome) {
+    return res.status(400).send('Corpo da requisição deve conter a propriedade ´nome´.')
+  }
+
+  //atualizamos na DB o newItem pelo ID, usando o Service
+  await service.updateById(id, newItem)
+
+  //enviamos uma resposta de sucesso
+  res.send(newItem)
 }
 
 function deleteById(req, res) {
