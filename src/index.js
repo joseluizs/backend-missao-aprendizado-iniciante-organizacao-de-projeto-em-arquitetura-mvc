@@ -25,15 +25,6 @@ async function main() {
 
   //FIXME: mover isso para a pasta personagem
   /*
-  //Endpoint Read all [GET] /personagem 
-  app.get('/personagem', async function (req, res) {
-    //acessamos a lista de item na collection do mongodb
-    const items = await collection.find().toArray()
-
-    //enviamos a lista de items como resultado
-    res.send(items)
-  })
-
   //Endpoint Read By ID [GET]/personagem/:id
   app.get('/personagem/:id', async function (req, res) {
     //acessamos o parametro de rota id

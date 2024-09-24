@@ -1,7 +1,10 @@
 const service = require('./personagem.service')
 
 async function readAll(req, res) {
+  //Acessamos a lista de personagens no service
   const items = await service.readAll()
+
+  //Enviamos a lista do personagem como resultado
   res.send(items)
 }
 
