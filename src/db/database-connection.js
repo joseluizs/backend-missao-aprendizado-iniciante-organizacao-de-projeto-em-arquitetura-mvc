@@ -4,18 +4,21 @@ const { MongoClient } = require('mongodb')
 const dbUrl = process.env.DATABASE_URL
 const dbName = 'mongodb-arquitetura-mvc'
 
+const client = new MongoClient(dbUrl)
+
 async function connectToDatabase() {
   //Realizamos a conexão com o banco de dados
-  const client = new MongoClient(dbUrl)
   console.log('Conectando ao banco de dados....')
   await client.connect()
   console.log('Banco de dados conectado com sucesso!')
-
-  const db = client.db(dbName)
-
-  //FIXME: usar o db de alguma forma
 }
 
+function getDatabase () {
+  return client.db(dbName)
+ 
+ }
+
 module.exports = {
-  connectToDatabase
+  connectToDatabase, 
+  getDatabase
 }
