@@ -1,30 +1,27 @@
 require('dotenv').config()
 const express = require('express')
-const { MongoClient, ObjectId } = require('mongodb')
-
-//Preparamos as informações de acesso ao banco de dados
-const dbUrl = process.env.DATABASE_URL
-const dbName = "mongodb-arquitetura-mvc"
+const { connectToDatabase } = require('./db/database-connection')
+//const { MongoClient, ObjectId } = require('mongodb')
 
 //Declaramos a função main
 async function main() {
-  //Realizamos a conexão com o banco de dados
-  const client = new MongoClient(dbUrl)
-  console.log('Conectando ao banco de dados....')
-  await client.connect()
-  console.log('Banco de dados conectado com sucesso!')
-
-  const db = client.db(dbName)
-  const collection = db.collection('personagem')
+  //FIX: utilizar o connectToDatabase() e receber o db
+  await connectToDatabase()
+  
+  //const collection = db.collection('personagem')
 
   const app = express()
+
+  //Milddlewares
+  //Sinalizar para Express q estou usando JSON no body
+  app.use(express.json())
 
   app.get('/', function (req, res) {
     res.send('Hello World!')
   })
 
-  // const lista = ['Java', 'Kotlin', 'Android']
-
+  //FIXME: mover isso para a pasta personagem
+  /*
   //Endpoint Read all [GET] /personagem 
   app.get('/personagem', async function (req, res) {
     //acessamos a lista de item na collection do mongodb
@@ -50,8 +47,7 @@ async function main() {
     res.send(item)
   })
 
-  //Sinalizar para Express q estou usando JSON no body
-  app.use(express.json())
+  
 
   //Endpoint Create [POST]/personagem
   app.post('/personagem', async function (req, res) {
@@ -131,10 +127,12 @@ async function main() {
 
     //Enviamos uma msg sucesso
     res.send('Item deletado com sucesso! ' + id)
-  })
+  })*/
 
-  app.listen(3000)
-}
-
-//Executamos a função main
-main()
+    app.listen(3000, function () {
+      console.log("Servidor rodando em http://localhost:3000")
+    })
+  }
+  
+  // Executamos a função main()
+  main()
