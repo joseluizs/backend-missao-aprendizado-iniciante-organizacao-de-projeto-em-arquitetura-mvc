@@ -1,30 +1,35 @@
-const { getDatabase } = require("../db/database-connection")
+const { ObjectId } = require('mongodb')
+const { getDatabase } = require('../db/database-connection')
 
 function getCollection() {
-  return getDatabase().collection('personagem')
+ return getDatabase().collection('personagem')
 }
 
 function readAll() {
-    //acessamos a lista de personagem na collection do mongo
-    return getCollection().find().toArray()
-  }
-  
-  function readById() {
+  //acessamos a lista de personagem na collection do mongo
+  return getCollection().find().toArray()
+}
 
-  }
+/**
+ * 
+ * @param {string} id 
+ * @returns 
+ */
+function readById(id) {
+  //retornar o item na collection usando o ID
+  return getCollection().findOne({ _id: new ObjectId(id)})
+}
   
-  function create() {
+function create() {
+}
+  
+function updateById() {
 
-  }
+}
   
-  function updateById() {
-
-  }
+function deleteById() {
+}
   
-  function deleteById() {
-
-  }
-  
-  module.exports = {
-    readAll, readById, create, updateById, deleteById
-  }
+module.exports = {
+  readAll, readById, create, updateById, deleteById
+}

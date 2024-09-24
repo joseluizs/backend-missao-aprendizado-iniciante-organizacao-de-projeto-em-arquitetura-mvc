@@ -25,24 +25,6 @@ async function main() {
 
   //FIXME: mover isso para a pasta personagem
   /*
-  //Endpoint Read By ID [GET]/personagem/:id
-  app.get('/personagem/:id', async function (req, res) {
-    //acessamos o parametro de rota id
-    const id = req.params.id
-
-    //acessar o item da lista usando o ID - 1
-    const item = await collection.findOne({ _id: new ObjectId(id)})
-
-    //checamos se o item obtido é existente
-    if (!item) {
-      return res.status(404).send('Item não encontrado!')
-    }
-    //Enviamos o item como resposta
-    res.send(item)
-  })
-
-  
-
   //Endpoint Create [POST]/personagem
   app.post('/personagem', async function (req, res) {
     //acessamos o body da requisição
