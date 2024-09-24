@@ -23,36 +23,10 @@ async function main() {
 
   app.use('/personagem', personagemRouter)
 
-  //FIXME: mover isso para a pasta personagem
-  /*
-
-  //Endpoint Update [PUT]/personagem/:id
-  app.put('/personagem/:id', async function (req, res) {
-    
+  app.listen(3000, function () {
+    console.log("Servidor rodando em http://localhost:3000")
   })
-
-  //Endpoint Delete [DELETE]/personagem/:id
-  app.delete('/personagem/:id', async function (req, res) {
-    //acessamos o parametro de rota
-    const id = req.params.id
-
-    //checar pra ver se o ID - 1 esta na lista
-    //exibir uma msg caso não esteja
-    // if (!lista[id - 1]) {
-    //   return res.status(404).send('Item não encontrado!')
-    // }
-
-    //remover o item da Collection usando o ID
-    await collection.deleteOne({ _id: new ObjectId(id) })
-
-    //Enviamos uma msg sucesso
-    res.send('Item deletado com sucesso! ' + id)
-  })*/
-
-    app.listen(3000, function () {
-      console.log("Servidor rodando em http://localhost:3000")
-    })
-  }
+}
   
   // Executamos a função main()
   main()

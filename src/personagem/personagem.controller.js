@@ -61,8 +61,15 @@ async function updateById(req, res) {
   res.send(newItem)
 }
 
-function deleteById(req, res) {
-  res.send('Delete By Id')
+async function deleteById(req, res) {
+  //acessamos o parametro de rota
+  const id = req.params.id
+   
+  //remover o item do DB, via Service
+  await service.deleteById(id)
+
+  //Enviamos uma msg sucesso
+  res.send('Item deletado com sucesso! ' + id)
 }
 
 module.exports = {
