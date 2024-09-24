@@ -25,32 +25,6 @@ async function main() {
 
   //FIXME: mover isso para a pasta personagem
   /*
-  //Endpoint Create [POST]/personagem
-  app.post('/personagem', async function (req, res) {
-    //acessamos o body da requisição
-    const novoItem = req.body
-
-    
-
-    //checar se o nome esta presento no body
-    if (!novoItem || !novoItem.nome) {
-      return res.status(400).send('Corpo da requisição deve conter a propriedade ´nome´.')
-    }
-
-
-    //testar se tem item duplicado
-    // if (lista.includes(novoItem)) {
-    // return res.status(409).send('Já existe este item na lista.')
-    // }
-
-
-    //adicionar na collection
-    //lista.push(novoItem)
-    await collection.insertOne(novoItem)
-
-    //exibir uma msg de sucesso
-    res.status(201).send(novoItem)
-  })
 
   //Endpoint Update [PUT]/personagem/:id
   app.put('/personagem/:id', async function (req, res) {

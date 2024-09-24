@@ -24,8 +24,21 @@ async function readById(req, res) {
   res.send(item)
 }
 
-function create(req, res) {
-  res.send('Create')
+async function create(req, res) {
+  //acessamos o body da requisição
+  const newItem = req.body
+
+  //checar se o nome esta presento no body
+  if (!newItem || !newItem.nome) {
+    return res.status(400).send('Corpo da requisição deve conter a propriedade ´nome´.')
+  }
+
+  //adicionar no banco através do Service
+  await service.create(newItem)
+
+  //exibir uma msg de sucesso
+  res.status(201).send(newItem)
+
 }
 
 function updateById(req, res) {
